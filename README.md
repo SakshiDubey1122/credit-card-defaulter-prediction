@@ -1,61 +1,150 @@
-# Credit Card Defaulter Prediction Project Report
+Credit Card Defaulter Prediction
+Overview
 
-## 1. Introduction
-The objective of this project is to build a predictive model to determine the likelihood of a credit card client defaulting on their payment. By analyzing demographic data and payment history, we aim to identify high-risk clients, which can help financial institutions in risk management and decision-making.
+This project focuses on predicting whether a credit card customer is likely to default on their payment. Using demographic information and historical payment behavior, multiple machine learning models are trained and compared to identify high-risk customers. The goal is to support better credit risk assessment and decision-making for financial institutions.
 
-## 2. Dataset Overview
-The dataset used for this analysis is Credit Card Defaulter Prediction.csv. It contains information on default payments, demographic factors, credit data, history of payment, and bill statements of credit card clients.
+Dataset
 
-**Key Features:**
-*   **Demographics:** SEX, EDUCATION, MARRIAGE, AGE
-*   **Financial History:** PAY_0 to PAY_6 (Repayment status), BILL_AMT1 to BILL_AMT6 (Bill statement amount), PAY_AMT1 to PAY_AMT6 (Previous payment amount)
-*   **Target Variable:** default (Yes/No) indicating whether the client defaulted.
+The analysis uses Credit Card Defaulter Prediction.csv, which contains customer-level information related to credit usage and repayment behavior.
 
-## 3. Methodology
+Key Feature Groups
 
-### 3.1 Data Preprocessing
-To prepare the data for modeling, several preprocessing steps were undertaken:
-*   **Data Cleaning:** The ID column was dropped as it provides no predictive value. Duplicate records were identified and removed to ensure data quality.
-*   **Encoding:** Categorical variables such as SEX,  EDUCATION, MARRIAGE and the target default were encoded into numerical format to be compatible with machine learning algorithms.
-*   **Train-Test Split:** The dataset was split into training (80%) and testing (20%) sets to evaluate model performance on unseen data.
-*   **Handling Imbalance:** The dataset was found to be imbalanced (fewer defaulters than non-defaulters). **SMOTE (Synthetic Minority Over-sampling Technique)** was applied to the training data to balance the class distribution, ensuring the models don't become biased towards the majority class.
-*   **Feature Scaling:** StandardScaler was used to scale the features, ensuring that all variables contribute equally to the model training process.
+Demographics
 
-### 3.2 Exploratory Data Analysis (EDA)
-Visualizations were created to understand the distribution of data and relationships between variables. This included analyzing the distribution of the target variable and demographic features.
+SEX
 
-### 3.3 Model Selection
-Three different machine learning algorithms were implemented and evaluated:
-1.  **Logistic Regression:** A linear model used as a baseline.
-2.  **Random Forest Classifier:** An ensemble learning method that operates by constructing a multitude of decision trees.
-3.  **XGBoost Classifier:** An optimized distributed gradient boosting library designed to be highly efficient, flexible, and portable.
+EDUCATION
 
-## 4. Model Evaluation & Results
+MARRIAGE
 
-The models were evaluated based on **Accuracy**, **ROC-AUC Score**, **Precision**, **Recall**, and **F1-Score**.
+AGE
 
-### 4.1 Logistic Regression
-*   **Accuracy:** 81.89%
-*   **ROC-AUC:** 0.7012
-*   **Performance:** Achieved the highest accuracy but the lowest ROC-AUC score. It is good for interpretability but struggles with complex non-linear patterns.
+Payment History
 
-### 4.2 Random Forest Classifier
-*   **Accuracy:** 80.66%
-*   **ROC-AUC:** 0.7454
-*   **Performance:** Showed a good balance, improving the ROC-AUC score significantly over Logistic Regression, indicating better capability in distinguishing between classes.
+PAY_0 to PAY_6: Repayment status for previous months
 
-### 4.3 XGBoost Classifier
-*   **Accuracy:** 81.65%
-*   **ROC-AUC:** 0.7569
-*   **Performance:** Achieved the best overall performance with a high accuracy comparable to Logistic Regression and the highest ROC-AUC score among all models.
+BILL_AMT1 to BILL_AMT6: Monthly bill amounts
 
-### 4.4 Confusion Matrix Analysis
-Confusion matrices were generated for each model to visualize the performance in terms of True Positives, True Negatives, False Positives, and False Negatives.
-*   **XGBoost** demonstrated a robust ability to correctly identify defaulters (True Positives) while maintaining a high number of correct non-default predictions (True Negatives).
+PAY_AMT1 to PAY_AMT6: Amounts paid in previous months
 
-## 5. Conclusion
-Based on the comprehensive evaluation:
+Target Variable
 
-*   **Logistic Regression** is suitable if model interpretability is the primary concern.
-*   **Random Forest** captures non-linear relationships better than the linear model.
-*   **XGBoost is the recommended model** for this project. It offers the best balance between accuracy and the ability to discriminate between defaulters and non-defaulters (highest ROC-AUC). It is robust and provides the most reliable predictions for identifying high-risk clients.
+default (Yes / No), indicating whether the customer defaulted on their credit card payment.
+
+Methodology
+Data Preprocessing
+
+Several preprocessing steps were applied before modeling:
+
+Data Cleaning
+
+Dropped the ID column as it does not contribute to prediction.
+
+Checked for and removed duplicate records.
+
+Encoding
+
+Categorical variables such as SEX, EDUCATION, and MARRIAGE were encoded into numerical form.
+
+The target variable (default) was converted into a binary format.
+
+Train–Test Split
+
+Data was split into 80% training and 20% testing sets using stratification to preserve class proportions.
+
+Handling Class Imbalance
+
+The dataset was imbalanced, with fewer defaulters than non-defaulters.
+
+SMOTE (Synthetic Minority Over-sampling Technique) was applied only to the training data to balance the classes and prevent model bias.
+
+Feature Scaling
+
+StandardScaler was used to normalize feature values so that no variable dominated model training.
+
+Exploratory Data Analysis (EDA)
+
+EDA was performed to understand:
+
+The distribution of the target variable
+
+Demographic patterns
+
+Relationships between financial behavior and default risk
+
+Visualizations were generated to support these insights.
+
+Models Implemented
+
+Three supervised learning models were trained and evaluated:
+
+Logistic Regression
+
+Used as a baseline model for interpretability.
+
+Random Forest Classifier
+
+An ensemble method capable of capturing non-linear relationships.
+
+XGBoost Classifier
+
+A gradient boosting model optimized for performance and accuracy.
+
+Model Evaluation and Results
+
+Models were evaluated using:
+
+Accuracy
+
+ROC-AUC score
+
+Precision, Recall, and F1-score
+
+Confusion matrices
+
+Logistic Regression
+
+Accuracy: 81.89%
+
+ROC-AUC: 0.7012
+
+Performs well in terms of accuracy but has limited ability to capture complex patterns.
+
+Random Forest
+
+Accuracy: 80.66%
+
+ROC-AUC: 0.7454
+
+Improves discrimination between defaulters and non-defaulters compared to Logistic Regression.
+
+XGBoost
+
+Accuracy: 81.65%
+
+ROC-AUC: 0.7569
+
+Achieves the best overall performance with strong predictive power and balanced classification.
+
+Confusion Matrix Analysis
+
+Confusion matrices were generated for all models.
+XGBoost showed the strongest ability to correctly identify defaulters while maintaining a high rate of correct non-default predictions.
+
+Conclusion
+
+Logistic Regression is suitable when interpretability is the main priority.
+
+Random Forest handles non-linear relationships better and improves class separation.
+
+XGBoost is the recommended model for this project, offering the best balance of accuracy and discrimination capability based on ROC-AUC.
+
+Overall, the results demonstrate that advanced ensemble models provide more reliable predictions for identifying high-risk credit card customers.
+
+Files in This Repository
+
+Code.ipynb – complete data preprocessing, modeling, and evaluation pipeline
+
+Credit Card Defaulter Prediction.csv – dataset
+
+*.png – visualizations including confusion matrices, ROC curves, and feature importance plots
