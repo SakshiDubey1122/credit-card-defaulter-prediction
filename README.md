@@ -30,7 +30,7 @@ Three different machine learning algorithms were implemented and evaluated:
 2.  **Random Forest Classifier:** An ensemble learning method that operates by constructing a multitude of decision trees.
 3.  **XGBoost Classifier:** An optimized distributed gradient boosting library designed to be highly efficient, flexible, and portable.
 
-## 4. Model Evaluation & Results
+## 4. Model Evaluation and Results
 
 The models were evaluated based on **Accuracy**, **ROC-AUC Score**, **Precision**, **Recall**, and **F1-Score**.
 
